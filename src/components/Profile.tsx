@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope, FaBriefcase, FaCode, FaCalendar, FaGraduationCap } from 'react-icons/fa'
 import { Education, Experience, WorkProject } from '../types'
+import profileImage from '../assets/images/Me.jpg'
 import './Profile.css'
 
 const Profile = () => {
@@ -128,9 +129,9 @@ const Profile = () => {
       <div className="profile-card">
         <div className="profile-header">
           <div className="profile-avatar">
-            <img 
-              src="src/assets/images/Me.jpg" 
-              alt="Profile" 
+            <img
+              src={profileImage}
+              alt="Profile"
               className="avatar-image"
             />
           </div>
