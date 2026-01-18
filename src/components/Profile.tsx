@@ -15,7 +15,7 @@ const Profile = () => {
         <div className="profile-header">
           <div className="profile-avatar">
             <img 
-              src="https://github.com/github.png" 
+              src="src/assets/images/Me.jpg" 
               alt="Profile" 
               className="avatar-image"
             />
