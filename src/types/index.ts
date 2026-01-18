@@ -48,6 +48,7 @@ export interface Education {
   startDate: string;
   endDate: string;
   location?: string;
+  results?: string;
   highlights: string[];
 }
 

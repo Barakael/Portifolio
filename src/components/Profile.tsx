@@ -92,27 +92,29 @@ const Profile = () => {
   const education: Education[] = [
     {
       id: 1,
-      institution: 'Add Your University or College',
-      program: 'BSc in Computer Science / Software Engineering',
+      institution: 'Ardhi University',
+      program: 'BSc in Computer Systems and Networking',
       level: 'Bachelor’s Degree',
-      startDate: '2020',
-      endDate: '2024',
+      results: 'GPA 4.1, Second Upper Class',
+      startDate: '2022',
+      endDate: '2025',
       location: 'Tanzania',
       highlights: [
-        'Focused on software engineering and system design',
+        'Focused on software Development and IoT Systems',
         'Completed capstone project in web and IoT systems',
       ],
     },
     {
       id: 2,
-      institution: 'Online Learning Platforms',
-      program: 'Advanced Web & Mobile Development',
-      level: 'Professional Certificates',
-      startDate: '2022',
-      endDate: 'Present',
+      institution: 'Ardhi University ',
+      program: 'Certificate in Multimedia Technologies',
+      level: 'Certificates',
+      results: 'Distinction',
+      startDate: 'june 2025',
+      endDate: 'June 2025',
       highlights: [
-        'React, TypeScript, Flutter, and Laravel specializations',
-        'Hands-on projects and real-world case studies',
+        'Multimedia content creation and editing',
+        'Video production and graphic design skills',
       ],
     },
   ]
@@ -270,12 +272,14 @@ const Profile = () => {
                     <p className="education-institution">{edu.institution}</p>
                     {edu.location && <p className="education-location">{edu.location}</p>}
                   </div>
+                  
                   <div className="education-date">
                     <FaCalendar className="date-icon" />
                     <span>{edu.startDate} - {edu.endDate}</span>
                   </div>
                 </div>
                 <p className="education-level">{edu.level}</p>
+                {edu.results && <p className="education-results">{edu.results}</p>}
                 <ul className="education-highlights">
                   {edu.highlights.slice(0, 2).map((highlight, idx) => (
                     <li key={idx}>{highlight}</li>

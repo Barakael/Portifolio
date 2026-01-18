@@ -480,6 +480,13 @@
   margin: 0 0 0.75rem 0;
 }
 
+.education-results {
+  font-size: 0.85rem;
+  color: #58a6ff;
+  font-weight: 600;
+  margin: -0.5rem 0 0.75rem 0;
+}
+
 .education-date {
   display: flex;
   align-items: center;
