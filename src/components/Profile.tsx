@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaEnvelope, FaBriefcase, FaCode, FaCalendar, FaGraduationCap } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope, FaBriefcase, FaCode, FaCalendar, FaGraduationCap } from 'react-icons/fa'
 import { Education, Experience, WorkProject } from '../types'
 import './Profile.css'
 
