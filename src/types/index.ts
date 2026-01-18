@@ -40,3 +40,14 @@ export interface WorkProject {
   highlights: string[];
 }
 
+export interface Education {
+  id: number;
+  institution: string;
+  program: string;
+  level: string;
+  startDate: string;
+  endDate: string;
+  location?: string;
+  highlights: string[];
+}
+

@@ -1,8 +1,13 @@
-import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaEnvelope, FaBriefcase, FaCode, FaCalendar } from 'react-icons/fa'
-import { Experience, WorkProject } from '../types'
+import { useState } from 'react'
+import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp, FaEnvelope, FaBriefcase, FaCode, FaCalendar, FaGraduationCap } from 'react-icons/fa'
+import { Education, Experience, WorkProject } from '../types'
 import './Profile.css'
 
 const Profile = () => {
+  const [showAllExperience, setShowAllExperience] = useState(false)
+  const [showAllProjects, setShowAllProjects] = useState(false)
+  const [showAllEducation, setShowAllEducation] = useState(false)
+
   const socialLinks = [
     { name: 'GitHub', icon: FaGithub, url: 'https://github.com/Barakael' },
     { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/baraka-lucas-1400793a3/' },
@@ -84,6 +89,38 @@ const Profile = () => {
     },
   ]
 
+  const education: Education[] = [
+    {
+      id: 1,
+      institution: 'Add Your University or College',
+      program: 'BSc in Computer Science / Software Engineering',
+      level: 'Bachelor’s Degree',
+      startDate: '2020',
+      endDate: '2024',
+      location: 'Tanzania',
+      highlights: [
+        'Focused on software engineering and system design',
+        'Completed capstone project in web and IoT systems',
+      ],
+    },
+    {
+      id: 2,
+      institution: 'Online Learning Platforms',
+      program: 'Advanced Web & Mobile Development',
+      level: 'Professional Certificates',
+      startDate: '2022',
+      endDate: 'Present',
+      highlights: [
+        'React, TypeScript, Flutter, and Laravel specializations',
+        'Hands-on projects and real-world case studies',
+      ],
+    },
+  ]
+
+  const visibleExperiences = showAllExperience ? experiences : experiences.slice(0, 1)
+  const visibleProjects = showAllProjects ? workProjects : workProjects.slice(0, 1)
+  const visibleEducation = showAllEducation ? education : education.slice(0, 1)
+
   return (
     <div className="profile">
       <div className="profile-card">
@@ -128,72 +165,135 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* Experience Section */}
-      <div className="experience-section">
-        <div className="section-header">
-          <FaBriefcase className="section-icon" />
-          <h2 className="section-title">Professional Experience</h2>
-        </div>
-        <div className="experience-list">
-          {experiences.map((exp) => (
-            <div key={exp.id} className="experience-item">
-              <div className="experience-header">
-                <div className="experience-info">
-                  <h3 className="experience-position">{exp.position}</h3>
-                  <p className="experience-company">{exp.company}</p>
-                  {exp.location && <p className="experience-location">{exp.location}</p>}
+      <div className="profile-sections">
+        {/* Experience Section */}
+        <section className="experience-section">
+          <div className="section-header">
+            <FaBriefcase className="section-icon" />
+            <h2 className="section-title">Professional Experience</h2>
+          </div>
+          <div className="experience-list">
+            {visibleExperiences.map((exp) => (
+              <div key={exp.id} className="experience-item">
+                <div className="experience-header">
+                  <div className="experience-info">
+                    <h3 className="experience-position">{exp.position}</h3>
+                    <p className="experience-company">{exp.company}</p>
+                    {exp.location && <p className="experience-location">{exp.location}</p>}
+                  </div>
+                  <div className="experience-date">
+                    <FaCalendar className="date-icon" />
+                    <span>{exp.startDate} - {exp.endDate}</span>
+                    {exp.current && <span className="current-badge">Current</span>}
+                  </div>
                 </div>
-                <div className="experience-date">
-                  <FaCalendar className="date-icon" />
-                  <span>{exp.startDate} - {exp.endDate}</span>
-                  {exp.current && <span className="current-badge">Current</span>}
+                <p className="experience-description clamp-text">{exp.description}</p>
+                <div className="experience-tech">
+                  {exp.technologies.map((tech) => (
+                    <span key={tech} className="tech-tag">{tech}</span>
+                  ))}
                 </div>
               </div>
-              <p className="experience-description">{exp.description}</p>
-              <div className="experience-tech">
-                {exp.technologies.map((tech) => (
-                  <span key={tech} className="tech-tag">{tech}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+            ))}
+          </div>
+          {experiences.length > 1 && (
+            <button
+              type="button"
+              className="view-more-button"
+              onClick={() => setShowAllExperience((prev) => !prev)}
+            >
+              {showAllExperience ? 'View Less' : 'View More'}
+            </button>
+          )}
+        </section>
 
-      {/* Work Projects Section */}
-      <div className="work-projects-section">
-        <div className="section-header">
-          <FaCode className="section-icon" />
-          <h2 className="section-title">Projects Worked On</h2>
-        </div>
-        <div className="work-projects-list">
-          {workProjects.map((project) => (
-            <div key={project.id} className="work-project-item">
-              <div className="work-project-header">
-                <h3 className="work-project-title">{project.title}</h3>
-                <span className="work-project-role">{project.role}</span>
+        {/* Projects Section */}
+        <section className="work-projects-section">
+          <div className="section-header">
+            <FaCode className="section-icon" />
+            <h2 className="section-title">Projects Worked On</h2>
+          </div>
+          <div className="work-projects-list">
+            {visibleProjects.map((project) => (
+              <div key={project.id} className="work-project-item">
+                <div className="work-project-header">
+                  <h3 className="work-project-title">{project.title}</h3>
+                  <span className="work-project-role">{project.role}</span>
+                </div>
+                <p className="work-project-description clamp-text">{project.description}</p>
+                <div className="work-project-date">
+                  <FaCalendar className="date-icon" />
+                  <span>{project.startDate} - {project.endDate}</span>
+                </div>
+                <div className="work-project-tech">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+                <div className="work-project-highlights">
+                  <p className="highlights-title">Highlights</p>
+                  <ul>
+                    {project.highlights.slice(0, 2).map((highlight, idx) => (
+                      <li key={idx}>{highlight}</li>
+                    ))}
+                    {project.highlights.length > 2 && (
+                      <li className="highlight-more">+{project.highlights.length - 2} more</li>
+                    )}
+                  </ul>
+                </div>
               </div>
-              <p className="work-project-description">{project.description}</p>
-              <div className="work-project-date">
-                <FaCalendar className="date-icon" />
-                <span>{project.startDate} - {project.endDate}</span>
-              </div>
-              <div className="work-project-tech">
-                {project.technologies.map((tech) => (
-                  <span key={tech} className="tech-tag">{tech}</span>
-                ))}
-              </div>
-              <div className="work-project-highlights">
-                <p className="highlights-title">Highlights:</p>
-                <ul>
-                  {project.highlights.map((highlight, idx) => (
+            ))}
+          </div>
+          {workProjects.length > 1 && (
+            <button
+              type="button"
+              className="view-more-button"
+              onClick={() => setShowAllProjects((prev) => !prev)}
+            >
+              {showAllProjects ? 'View Less' : 'View More'}
+            </button>
+          )}
+        </section>
+
+        {/* Education Section */}
+        <section className="education-section">
+          <div className="section-header">
+            <FaGraduationCap className="section-icon" />
+            <h2 className="section-title">Education & Platforms</h2>
+          </div>
+          <div className="education-list">
+            {visibleEducation.map((edu) => (
+              <div key={edu.id} className="education-item">
+                <div className="education-header">
+                  <div>
+                    <h3 className="education-program">{edu.program}</h3>
+                    <p className="education-institution">{edu.institution}</p>
+                    {edu.location && <p className="education-location">{edu.location}</p>}
+                  </div>
+                  <div className="education-date">
+                    <FaCalendar className="date-icon" />
+                    <span>{edu.startDate} - {edu.endDate}</span>
+                  </div>
+                </div>
+                <p className="education-level">{edu.level}</p>
+                <ul className="education-highlights">
+                  {edu.highlights.slice(0, 2).map((highlight, idx) => (
                     <li key={idx}>{highlight}</li>
                   ))}
                 </ul>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+          {education.length > 1 && (
+            <button
+              type="button"
+              className="view-more-button"
+              onClick={() => setShowAllEducation((prev) => !prev)}
+            >
+              {showAllEducation ? 'View Less' : 'View More'}
+            </button>
+          )}
+        </section>
       </div>
     </div>
   )
