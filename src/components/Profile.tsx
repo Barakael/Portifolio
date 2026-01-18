@@ -3,11 +3,10 @@ import './Profile.css'
 
 const Profile = () => {
   const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/yourusername' },
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://linkedin.com/in/yourusername' },
-    { name: 'Twitter', icon: FaTwitter, url: 'https://twitter.com/yourusername' },
-    { name: 'WhatsApp', icon: FaWhatsapp, url: 'https://wa.me/1234567890' },
-    { name: 'Email', icon: FaEnvelope, url: 'mailto:your.email@example.com' },
+    { name: 'GitHub', icon: FaGithub, url: 'https://github.com/Barakael' },
+    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/baraka-lucas-1400793a3/' },
+    { name: 'WhatsApp', icon: FaWhatsapp, url: 'https://wa.me/255629288966' },
+    { name: 'Email', icon: FaEnvelope, url: 'mailto:barakaellucas2019@gmail.com' },
   ]
 
   return (
@@ -22,32 +21,18 @@ const Profile = () => {
             />
           </div>
           <div className="profile-info">
-            <h1 className="profile-name">Your Name</h1>
-            <p className="profile-username">@yourusername</p>
+            <h1 className="profile-name">Barakael Lucas</h1>
+            <p className="profile-username">barakael</p>
           </div>
         </div>
         
         <div className="profile-bio">
           <p>
-            Full-stack developer passionate about building beautiful and functional web applications. 
-            Experienced in React, TypeScript, Node.js, and modern web technologies.
+            Full-stack developer passionate about building beautiful and functional web, applications and hardware Systems. 
+            Experienced in React TypeScript, Laravel PHP, Flutter and IoT technologies.
           </p>
         </div>
 
-        <div className="profile-stats">
-          <div className="stat">
-            <span className="stat-value">50+</span>
-            <span className="stat-label">Projects</span>
-          </div>
-          <div className="stat">
-            <span className="stat-value">1.2K</span>
-            <span className="stat-label">Contributions</span>
-          </div>
-          <div className="stat">
-            <span className="stat-value">200+</span>
-            <span className="stat-label">Stars</span>
-          </div>
-        </div>
 
         <div className="profile-links">
           {socialLinks.map((link) => {
