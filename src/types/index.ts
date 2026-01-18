@@ -16,3 +16,27 @@ export interface SocialLink {
   url: string;
   icon: string;
 }
+
+export interface Experience {
+  id: number;
+  position: string;
+  company: string;
+  location?: string;
+  startDate: string;
+  endDate: string;
+  current: boolean;
+  description: string;
+  technologies: string[];
+}
+
+export interface WorkProject {
+  id: number;
+  title: string;
+  description: string;
+  role: string;
+  technologies: string[];
+  startDate: string;
+  endDate: string;
+  highlights: string[];
+}
+
